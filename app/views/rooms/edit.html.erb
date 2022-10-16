@@ -1,0 +1,28 @@
+<h1>ルーム編集</h1>
+<%= render 'shared/error_form', {model: @room} %>
+<%= form_with model: @room, local: true do |f| %>
+    <table class="room_table">
+      <tr>
+        <th><%= f.label :name ,"名前" %></th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :place ,"住所" %></th>
+        <td><%= f.text_field :place %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :introduction ,"部屋紹介" %></th>
+        <td><%= f.text_area :introduction %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :price ,"料金" %></th>
+        <td><%= f.number_field :price %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :room_image ,"部屋画像" %></th>
+        <td><%= f.file_field :room_image %></td>
+      </tr>
+      <tr><td colspan="2"><%= f.submit "編集完了する"%></td></tr>
+      <tr><td colspan="2"><%= link_to "検索ページに戻る", root_path %></td></tr>
+    </table>
+<% end %>

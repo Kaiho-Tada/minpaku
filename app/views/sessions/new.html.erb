@@ -1,0 +1,18 @@
+<h1>ユーザーログイン</h1>
+<% if @error_message %>
+    <%= @error_message %>
+<% end %>
+<%= form_with(url: sessions_path, local: true) do |f| %>
+    <table class="user_table">
+      <tr>
+        <th><%= f.label :email ,"Eメール" %></th>
+        <td><%= f.text_field :email %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :password ,"パスワード" %></th>
+        <td><%= f.text_field :password %></td>
+      </tr>
+      <tr><td colspan="2"><%= f.submit "ログインする"%></td></tr>
+      <tr><td colspan="2"><%= link_to "タイトルページに戻る", root_path %></td></tr>
+    </table>
+<% end %>

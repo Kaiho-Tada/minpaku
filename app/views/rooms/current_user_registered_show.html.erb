@@ -1,0 +1,43 @@
+<h3>ルーム詳細</h3>
+<% @rooms.each do |room| %>
+    <table align="left" class="room_table">
+        <tr>
+            <% if room.room_image.url %>
+                <td colspan="2"><%= image_tag room.room_image.url, class: "image" %></td>
+            <% else %>
+                <p>画像が設定されていません<p>
+            <% end %>
+        </tr>
+        <tr>
+            <th>名前</th>
+            <td>
+                <%= link_to room.name, room %>
+            </td>
+        </tr>
+        <tr>
+            <th>住所</th>
+            <td>
+                <%= link_to room.place, room %>
+            </td>
+        </tr>
+        <tr>
+            <th>ルーム紹介</th>
+            <td>
+                <%= link_to room.introduction, room %>
+            </td>
+        </tr>
+        <tr>
+            <th>料金</th>
+            <td>
+                <%= link_to room.price, room %>
+            </td>
+        </tr>
+        <% if room.registered_by?(current_user) %>
+            <tr><td colspan="2" ><%= link_to "編集", edit_room_path(room) %></td></tr>
+            <tr><td colspan="2" ><%= link_to "削除", room_path(room), method: :delete, data: {confirm: "本当に削除しますか？"} %></td></tr>
+        <% else %>
+            <tr><td colspan="2"><%= link_to "タイトルページに戻る", root_path %></td></tr>
+        <% end %>
+    </table>
+<% end %>
+

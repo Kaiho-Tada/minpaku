@@ -1,0 +1,58 @@
+
+  .header_container{
+    text-align: left;
+    padding-bottom: 130px;
+  }
+  .logo{
+    text-align: left;
+    font-size: 20px;
+    float: left;
+    padding-right: 23px;
+  }
+  .search_form{
+    text-align: left;
+    display: inline;
+    float: left;
+    padding-right: 23px;
+    height: 100px;
+  }
+  .search_place_form{
+    text-align: left;
+    display: inline;
+    float: left;
+    padding-right: 23px;
+  }
+  .search_form, text_field{
+    height: 60px;
+  }
+  .search_place_form, text_field{
+    height: 60px;
+  }
+  .header_menu_right{
+    text-align: right;
+    float: right;
+    font-size: 20px;
+  }
+  .header_menu_left{
+    float: left;
+    text-align: left;
+    font-size: 20px;
+    padding-right: 23px;
+  }
+  .header_user_registered{
+    padding-right: 23px;
+  }
+  table th {
+    background-color: #75A9FF;
+    padding: 10px 20px;
+  }
+  
+  table td {
+    background-color: #D9E5FF;
+    padding: 10px 20px;
+  }
+  
+  .notice {
+    background-color: #FFFF00;
+    padding: 5px;
+  }

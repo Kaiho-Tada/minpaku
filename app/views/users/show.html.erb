@@ -1,0 +1,24 @@
+<h3>ユーザー詳細</h3>
+<% if @user.avatar.url %>
+    <p class="input-image">
+        <%= image_tag @user.avatar.url, class: "input-image" %>    
+    </p>
+<% else %>
+    <p>画像が設定されていません<p>
+<% end %>
+<table class="user_table">
+    <tr>
+        <th>名前</th>
+        <td><%= @user.name %></td>
+    </tr>
+    <tr>
+        <th>メールアドレス</th>
+        <td><%= @user.email %></td>
+    </tr>
+    <tr>
+        <th>自己紹介</th>
+        <td><%= @user.introduction %></td>
+    </tr>
+    <tr><td colspan="2" ><%= link_to "編集", edit_user_path(@user) %></td></tr>
+    <tr><td colspan="2"><%= link_to "タイトルページに戻る", root_path %></td></tr>
+</table>

@@ -1,0 +1,18 @@
+<h2>検索結果</h2>
+
+<table>
+    <% @rooms.each do |room| %>
+        <tr>
+            <td><%= image_tag room.room_image.url, class: "image" %></td>
+        </tr>
+        <tr>
+            <td>部屋名: <%= link_to room.name, room %></td>
+        </tr>
+        <tr>
+            <td>住所: <%= link_to room.place, room %></td>
+        </tr>
+        <tr>
+            <td>価格: <%= link_to room.price, room %></td>
+        </tr>
+    <% end %>
+</table>

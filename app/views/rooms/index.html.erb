@@ -1,0 +1,22 @@
+<h1>ルーム一覧</h1>
+<% @rooms.each do |room| %>
+    <table align="left" class="room_table">
+        <tr>
+            <td colspan="2">
+                <%= image_tag room.room_image.url, class: "image" %>
+            </td>
+        </tr>
+        <tr>
+            <th>部屋名</th>
+            <td><%= link_to room.name, room %></td>
+        </tr>
+        <tr>
+            <th>住所</th>
+            <td><%= link_to room.place, room %></td>
+        </tr>
+        <tr>
+            <th>価格</th>
+            <td><%= link_to room.price, room %></td>
+        </tr>
+    </table>
+<% end %>

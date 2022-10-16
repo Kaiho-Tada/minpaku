@@ -10,6 +10,49 @@
   </head>
 
   <body>
+    <header>
+      <div class="container">
+        <div class="header_container">
+          <%= link_to "宿泊アプリ", root_path, class: "logo" %>
+          <div class="form">
+            <%= form_with(url: search_path, local: true, method: :get, class: "search_form") do |f| %>
+              <%= f.text_field :word, placeholder: "キーワード" %>
+              <%= f.submit "検索" %>
+            <% end %>
+          <end>
+          <div class="_form">
+            <%= form_with(url: search_place_path, local: true, method: :get, class: "search_place_form") do |f| %>
+              <%= f.text_field :word, placeholder: "エリア" %>
+              <%= f.submit "検索" %>
+            <% end %>
+          <end>
+        <end>
+      </div>
+      <ul class="header_menu">
+        <div class="header_menu_left">
+          <% if !logged_in? %>
+            <%= link_to "登録", new_user_path, class: "header_user_registered" %>
+            <%= link_to "ログイン", new_session_path, class: "header_user_login" %>
+          <% end %>
+        </div>
+        <div class="header_menu_right">
+          <% if logged_in? %>
+            <%= link_to "ログアウト", session_path(current_user), method: :delete %>
+            <%= link_to "ルーム登録", new_room_path %>
+            <%= link_to "予約済みルーム一覧", reservations_path %>
+            <%= link_to "登録済みルーム一覧", current_user_registered_show_path %>
+            <%= link_to "ルーム一覧", rooms_path %>
+            <%= link_to current_user.name, user_path(current_user) %>
+          <% end %>
+        </div>
+      <ul>
+    </header>
+
+    <% if flash[:notice] %>
+      <h2><%= flash[:notice] %></h2>
+    <% end %>
+
+    
     <%= yield %>
   </body>
 </html>
