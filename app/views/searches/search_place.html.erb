@@ -1,6 +1,6 @@
-<h2>検索結果</h2>
 <table>
     <% @rooms.each do |room| %>
+        <tr><th colspan="2">検索結果</th></tr>
         <tr>
             <td><%= image_tag room.room_image.url, class: "image" %></td>
         </tr>

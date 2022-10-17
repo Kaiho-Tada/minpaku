@@ -1,26 +1,24 @@
 
   .header_container{
     text-align: left;
-    padding-bottom: 130px;
   }
   .logo{
     text-align: left;
     font-size: 20px;
     float: left;
-    padding-right: 23px;
+    padding-right: 3px;
   }
   .search_form{
     text-align: left;
     display: inline;
     float: left;
-    padding-right: 23px;
+    padding-right: 3px;
     height: 100px;
   }
   .search_place_form{
     text-align: left;
     display: inline;
     float: left;
-    padding-right: 23px;
   }
   .search_form, text_field{
     height: 60px;
@@ -37,22 +35,23 @@
     float: left;
     text-align: left;
     font-size: 20px;
-    padding-right: 23px;
+    padding-left: 23px;
   }
   .header_user_registered{
     padding-right: 23px;
   }
-  table th {
-    background-color: #75A9FF;
-    padding: 10px 20px;
-  }
   
-  table td {
-    background-color: #D9E5FF;
-    padding: 10px 20px;
-  }
   
   .notice {
-    background-color: #FFFF00;
-    padding: 5px;
+    text-align: center;
+    height: 6px;
+    font-size: 25px;
+    padding-top: 60px;
+  }
+  table{
+    padding-left: 20px;
+    text-align: center;
+  }
+  .body{
+    padding-top: 100px;
   }

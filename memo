@@ -16,3 +16,4 @@ before_action :authenticate
         flash[:notice] = "ログインしてください"
         redirect_to root_path
     end
+    

@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get "/reservations" => "reservations#index"
   get '/search' => 'searches#search'
   get '/search_place' => 'searches#search_place'
+  get '/reservation_page' => 'rooms#reservation_page'
+  get '/current_user_reservation' => "reservations#current_user_reservations"
 end 

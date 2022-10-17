@@ -51,6 +51,10 @@ class RoomsController < ApplicationController
         redirect_to rooms_path
     end
     
+    def reservation_page
+        @rooms = Room.where.not(owner: current_user)
+        @reservation = Reservation.new
+    end
     def ensure_correct_user
         @room = Room.find(params[:id])
         if @room.owner_id != current_user.id

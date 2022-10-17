@@ -1,6 +1,6 @@
-<h3>ルーム詳細</h3>
 <% @rooms.each do |room| %>
     <table align="left" class="room_table">
+        <tr><th colspan="2">ルーム詳細</th></tr>
         <tr>
             <% if room.room_image.url %>
                 <td colspan="2"><%= image_tag room.room_image.url, class: "image" %></td>
