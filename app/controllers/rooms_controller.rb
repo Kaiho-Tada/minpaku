@@ -21,13 +21,13 @@ class RoomsController < ApplicationController
 
     def show
         @room = Room.find(params[:id])
-        @reservation = Reservation.new
         @current_user_reservation = current_user.reservations.find_by(id: params[:room_id])
         @reservations = @room.reservations.where("end_at >?", Time.zone.now).order(:start_at)
     end
 
     def current_user_registered_show
         @rooms = Room.where(owner_id: current_user.id)
+        @reservation = Reservation.new
     end
 
     def edit
@@ -52,7 +52,7 @@ class RoomsController < ApplicationController
     end
     
     def reservation_page
-        @rooms = Room.where.not(owner: current_user)
+        @rooms = Room.all
         @reservation = Reservation.new
     end
     def ensure_correct_user
