@@ -1,26 +1,28 @@
-<table class="user_table">
-    <tr><th colspan="2">ユーザー詳細</th></tr>
-    <% if @user.avatar.url %>
-    <tr>
-        <td colspan="2"><%= image_tag @user.avatar.url, class: "input-image" %></td>
-    <tr>
-    <% else %>
-    <tr><th colspan="2">画像が設定されていません</th></tr>
-    <% end %>
-    <tr>
-        <th>名前</th>
-        <td><%= @user.name %></td>
-    </tr>
-    <tr>
-        <th>メールアドレス</th>
-        <td><%= @user.email %></td>
-    </tr>
-    <tr>
-        <th>自己紹介</th>
-        <td><%= @user.introduction %></td>
-    </tr>
-    <tr><td colspan="2"><%= link_to "編集", edit_user_path(@user) %></td></tr>
-    <tr><td colspan="2"><%= link_to "ルーム予約", reservation_page_path %></td></tr>
-    <tr><td colspan="2"><%= link_to "予約一覧", current_user_reservation_path %></td></tr>
-    <tr><td colspan="2"><%= link_to "タイトルページに戻る", root_path %></td></tr>
-</table>
+<div class="contents">
+    <table class="user_table user_show_table">
+        <tr><th colspan="2">ユーザー詳細</th></tr>
+        <% if @user.avatar.url %>
+            <tr>
+                <td colspan="2"><%= image_tag @user.avatar.url, class: "input-image" %></td>
+            <tr>
+        <% else %>
+            <tr><th colspan="2">画像が設定されていません</th></tr>
+        <% end %>
+        <tr>
+            <th>名前</th>
+            <td><%= @user.name %></td>
+        </tr>
+        <tr>
+            <th>メールアドレス</th>
+            <td><%= @user.email %></td>
+        </tr>
+        <tr>
+            <th>自己紹介</th>
+            <td><%= @user.introduction %></td>
+        </tr>
+        <tr><td colspan="2"><%= link_to "編集", edit_user_path(@user) %></td></tr>
+        <tr><td colspan="2"><%= link_to "ルーム予約", reservation_page_path %></td></tr>
+        <tr><td colspan="2"><%= link_to "予約一覧", current_user_reservation_path %></td></tr>
+        <tr><td colspan="2"><%= link_to "タイトルページに戻る", root_path %></td></tr>
+    </table>
+</div>

@@ -14,3 +14,38 @@
   background-color: #D9E5FF;
   padding: 10px 20px;
 }
+.flex{
+  display: flex;
+}
+.new_room_table{
+  height: 460px;
+}
+.current_user_registered_room_table{
+  padding-left: 30px;
+}
+.room_index_table{
+  padding-left: 25px;
+}
+.reservation_page_table{
+  padding-left: 25px;
+}
+.room_show_table{
+  float: left;
+  margin-left: 260px;
+  width: 500px;
+  height: 600px;
+}
+.room_show_reservation_table{
+  width: 400px;
+  height: 400px;
+  padding-bottom: 30px;
+  margin-right: 260px;
+}
+.room_reservation_cofirm_table{
+  width: 400px;
+  margin-right: 260px;
+}
+.room_show_error_message_wrapper{
+  width: fit-content;
+  margin-left: 830px;
+}

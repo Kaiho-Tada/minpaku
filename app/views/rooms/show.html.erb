@@ -1,41 +1,50 @@
-<table class="room_table">
-  <tr><th colspan="2">ルーム詳細</th></tr>
-  <tr>
-    <% if @room.room_image.url %>
-      <td colspan="2"><%= image_tag @room.room_image.url, class: "image" %></td>
-    <% else %>
-      <p>画像が設定されていません<p>
+<div class="contents">
+  <table class="room_table room_show_table">
+    <tr><th colspan="2">ルーム詳細</th></tr>
+    <tr>
+      <% if @room.room_image.url %>
+        <td colspan="2"><%= image_tag @room.room_image.url, class: "image" %></td>
+      <% else %>
+        <p>画像が設定されていません<p>
+      <% end %>
+    </tr>
+    <tr>
+        <th>名前</th>
+        <td><%= @room.name %></td>
+    </tr>
+    <tr>
+        <th>住所</th>
+        <td><%= @room.place %></td>
+    </tr>
+    <tr>
+        <th>ルーム紹介</th>
+        <td><%= @room.introduction %></td>
+    </tr>
+    <tr>
+        <th>料金</th>
+        <td><%= @room.price %></td>
+    </tr>
+    <% if @room.registered_by?(current_user) %>
+      <tr><th colspan="2"><%= link_to "編集", edit_room_path(@room) %></th></tr>
+      <tr><th colspan="2"><%= link_to "削除", room_path(@room), method: :delete, data: {confirm: "本当に削除しますか？"} %></th></tr>
     <% end %>
-  </tr>
-  <tr>
-      <th>名前</th>
-      <td><%= @room.name %></td>
-  </tr>
-  <tr>
-      <th>住所</th>
-      <td><%= @room.place %></td>
-  </tr>
-  <tr>
-      <th>ルーム紹介</th>
-      <td><%= @room.introduction %></td>
-  </tr>
-  <tr>
-      <th>料金</th>
-      <td><%= @room.price %></td>
-  </tr>
-  <% if @room.registered_by?(current_user) %>
-    <tr><th colspan="2"><%= link_to "編集", edit_room_path(@room) %></th></tr>
-    <tr><th colspan="2"><%= link_to "削除", room_path(@room), method: :delete, data: {confirm: "本当に削除しますか？"} %></th></tr>
-  <% end %>
-  <tr><td colspan="2"><%= link_to "タイトルページに戻る", root_path %></td></tr>
-</table>
-<% if @room.registered_by?(current_user) %>
-<% elsif @current_user_reservation %>
-  <%= link_to "予約をキャンセルする", room_reservation_path(@room), method: :delete, data: {confirm: "本当に予約をキャンセルしますか？"}  %>
-<% else %>
-  <%= form_with(model: @room.reservations.build, url: room_reservations_path(@room), local: true) do |f| %>
-      <%= render 'shared/error_form', {model: @reservation} %>
-      <table class="reservation_table">
+    <tr><td colspan="2"><%= link_to "タイトルページに戻る", root_path %></td></tr>
+  </table>
+
+  <% if @current_user_reservation %>
+    <%= link_to "予約をキャンセルする", room_reservation_path(@room), method: :delete, data: {confirm: "本当に予約をキャンセルしますか？"}  %>
+  <% else %>
+    <%= form_with(model: @room.reservations.build, url: room_reservations_path(@room), local: true) do |f| %>
+      <div class="room_show_error_message_wrapper">
+        <% if @reservation.errors.any? %>
+            <% @reservation.errors.full_messages.each do |message| %>
+              <ul>
+                  <li><%= message %></li>
+              </ul>
+            <% end %>
+        <% end %>
+      </div>
+      <table class="reservation_table room_show_reservation_table">
         <tr><th colspan="2">ルーム予約</th></tr>
         <tr>
           <th colspan="2"><%= @room.price %>円/日</th>
@@ -55,20 +64,21 @@
         <tr><td colspan="2"><%= f.submit "予約完了する"%></td></tr>
         <tr><td colspan="2"><%= link_to "タイトルページに戻る", root_path %></td></tr>
       </table>
+    <% end %>
   <% end %>
-<% end %>
 
-<% @reservations.each do |reservation| %>
-  <table class="reservation_table">
-    <tr>
-      <th>予約済み</th>
-    </tr>
-    <tr>
-      <td>
-        <%= link_to "/rooms/#{@room.id}/reservations/#{reservation.id}", method: :patch do %>       
-            <% "#{reservation.start_at.to_s(:datetime_jp)} - #{reservation.end_at.to_s(:datetime_jp)}" %>
-        <% end %>
-      </td>
-    </tr>
-  </table>
-<% end %>
+  <% @reservations.each do |reservation| %>
+    <table class="reservation_table room_reservation_cofirm_table">
+      <tr>
+        <th>予約済み</th>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to "/rooms/#{@room.id}/reservations/#{reservation.id}", method: :patch do %>       
+              <% "#{reservation.start_at.to_s(:datetime_jp)} - #{reservation.end_at.to_s(:datetime_jp)}" %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>

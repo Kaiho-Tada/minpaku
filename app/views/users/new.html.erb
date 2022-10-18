@@ -1,6 +1,7 @@
-<%= render 'shared/error_form', {model: @user} %>
-<%= form_with model: @user, local: true do |f| %>
-    <table class="user_table">
+<div class="contents">
+  <%= form_with model: @user, local: true do |f| %>
+    <%= render 'shared/error_form', {model: @user} %>
+    <table class="user_table new_user_table">
       <tr><th colspan="2">ユーザー登録</th></tr>
       <tr>
         <th><%= f.label :name ,"名前" %></th>
@@ -18,3 +19,4 @@
       <tr><td colspan="2"><%= link_to "タイトルに戻る", root_path %></td></tr>
     </table>
   <% end %>
+</div>

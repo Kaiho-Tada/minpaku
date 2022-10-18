@@ -1,17 +1,19 @@
-<table>
-    <% @rooms.each do |room| %>
-        <tr><th colspan="2">検索結果</th></tr>
-        <tr>
-            <td><%= image_tag room.room_image.url, class: "image" %></td>
-        </tr>
-        <tr>
-            <td>部屋名: <%= link_to room.name, room %></td>
-        </tr>
-        <tr>
-            <td>住所: <%= link_to room.place, room %></td>
-        </tr>
-        <tr>
-            <td>価格: <%= link_to room.price, room %></td>
-        </tr>
-    <% end %>
-</table>
+<div class="contents">
+    <table>
+        <% @rooms.each do |room| %>
+            <tr><th colspan="2">検索結果</th></tr>
+            <tr>
+                <td><%= image_tag room.room_image.url, class: "image" %></td>
+            </tr>
+            <tr>
+                <td>部屋名: <%= link_to room.name, room %></td>
+            </tr>
+            <tr>
+                <td>住所: <%= link_to room.place, room %></td>
+            </tr>
+            <tr>
+                <td>価格: <%= link_to room.price, room %></td>
+            </tr>
+        <% end %>
+    </table>
+</div

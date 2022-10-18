@@ -23,6 +23,7 @@ class RoomsController < ApplicationController
         @room = Room.find(params[:id])
         @current_user_reservation = current_user.reservations.find_by(id: params[:room_id])
         @reservations = @room.reservations.where("end_at >?", Time.zone.now).order(:start_at)
+        @reservation = Reservation.new
     end
 
     def current_user_registered_show

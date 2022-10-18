@@ -44,14 +44,21 @@
   
   .notice {
     text-align: center;
-    height: 6px;
-    font-size: 25px;
-    padding-top: 60px;
+    padding-top:60px;
   }
   table{
     padding-left: 20px;
     text-align: center;
+    margin: 0 auto;
+    padding-bottom: 10px;
   }
-  .body{
-    padding-top: 100px;
+  .contents{
+    padding-top: 130px;
+  }
+  .error_message_wrapper{
+    width: fit-content;
+    margin: auto;
+  }
+  .contents_body{
+    padding-top: 30px;
   }

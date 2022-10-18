@@ -1,34 +1,36 @@
-<% room = @reservation.room %>
-<% start_at_year = @reservation.start_at.to_s(:datetime_jp)[0..3] %>
-<% start_at_month = @reservation.start_at.to_s(:datetime_jp)[5..7] %>
-<% start_at_day = @reservation.start_at.to_s(:datetime_jp)[9..10] %>
-<% end_at_year = @reservation.end_at.to_s(:datetime_jp)[0..3] %>
-<% end_at_month = @reservation.end_at.to_s(:datetime_jp)[5..7] %>
-<% end_at_day = @reservation.end_at.to_s(:datetime_jp)[9..10] %>
-<% start_at = Date.new(start_at_year.to_i, start_at_month.to_i, start_at_day.to_i) %>
-<% end_at = Date.new(end_at_year.to_i, end_at_month.to_i, end_at_day.to_i) %>
-<% diff = end_at - start_at %>
-<% diff = diff.to_s[0..1] %>
-<% total_price = diff.to_i * room.price * @reservation.number_people  %>
+<div class="contents">
+    <% room = @reservation.room %>
+    <% start_at_year = @reservation.start_at.to_s(:datetime_jp)[0..3] %>
+    <% start_at_month = @reservation.start_at.to_s(:datetime_jp)[5..7] %>
+    <% start_at_day = @reservation.start_at.to_s(:datetime_jp)[9..10] %>
+    <% end_at_year = @reservation.end_at.to_s(:datetime_jp)[0..3] %>
+    <% end_at_month = @reservation.end_at.to_s(:datetime_jp)[5..7] %>
+    <% end_at_day = @reservation.end_at.to_s(:datetime_jp)[9..10] %>
+    <% start_at = Date.new(start_at_year.to_i, start_at_month.to_i, start_at_day.to_i) %>
+    <% end_at = Date.new(end_at_year.to_i, end_at_month.to_i, end_at_day.to_i) %>
+    <% diff = end_at - start_at %>
+    <% diff = diff.to_s[0..1] %>
+    <% total_price = diff.to_i * room.price * @reservation.number_people  %>
 
 
-<h3>予約詳細</h3>
-<table class="reservation_table">
-  <tr>
-      <th>開始日</th>
-      <td><%= @reservation.start_at.to_s(:datetime_jp) %></td>
-  </tr>
-  <tr>
-      <th>終了日</th>
-      <td><%= @reservation.end_at.to_s(:datetime_jp) %></td>
-  </tr>
-  <tr>
-      <th>人数</th>
-      <td><%= @reservation.number_people %></td>
-  </tr>
-  <tr>
-      <th>料金</th>
-      <td><%= total_price %></td>
-  </tr>
-  <tr><td colspan="2"><%= link_to "タイトルページに戻る", root_path %></td></tr>
-</table>
+    <h3>予約詳細</h3>
+    <table class="reservation_table">
+    <tr>
+        <th>開始日</th>
+        <td><%= @reservation.start_at.to_s(:datetime_jp) %></td>
+    </tr>
+    <tr>
+        <th>終了日</th>
+        <td><%= @reservation.end_at.to_s(:datetime_jp) %></td>
+    </tr>
+    <tr>
+        <th>人数</th>
+        <td><%= @reservation.number_people %></td>
+    </tr>
+    <tr>
+        <th>料金</th>
+        <td><%= total_price %></td>
+    </tr>
+    <tr><td colspan="2"><%= link_to "タイトルページに戻る", root_path %></td></tr>
+    </table>
+</div>

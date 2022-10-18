@@ -7,18 +7,13 @@ class ReservationsController < ApplicationController
     end
     def create
         room = Room.find(params[:room_id])
-        key_from_reservation_page = params[:key]
         @reservation = current_user.reservations.build do |t|
             t.room = room
             t.number_people = params[:reservation][:number_people]
         end
         if @reservation.update(params.require(:reservation).permit(:start_at, :end_at))
             flash[:notice] = "以下の内容で予約しました"
-            redirect_to room_reservation_path(room, current_user)
-        elsif key_from_reservation_page
-            @room = room
-            @rooms = Room.where.not(owner: current_user)
-            render "rooms/reservation_page"           
+            redirect_to room_reservation_path(room, current_user)      
         else
             @room = room
             @reservations = @room.reservations.where("end_at >?", Date.today).order(:start_at)
