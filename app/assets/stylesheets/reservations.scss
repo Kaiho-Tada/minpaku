@@ -1,0 +1,21 @@
+// Place all the styles related to the reservations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.image{
+    width: 330px;
+    height: 230px;
+}
+.reservation_table th {
+    background-color: #FF82B2;
+    padding: 10px 20px;
+}
+
+.reservation_table td {
+    background-color: #FFD5EC;
+    padding: 10px 20px;
+}
+.reservations_table {
+    width: 1350px;
+}
+

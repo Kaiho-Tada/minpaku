@@ -1,0 +1,11 @@
+<div class="top">
+    <div class="contants">
+        <div class="container">
+            <h1 class="headding">Potepan Shareでまだ体験したことのない旅をしよう</h1>
+            <%= form_with(url: search_place_path, local: true, method: :get, class: "form_place_search form_search_top") do |f| %>
+                <%= f.text_field :word, placeholder: "エリア" %>
+                <%= f.submit "検索" %>
+            <% end %>
+        </div>
+    </div>
+</div>

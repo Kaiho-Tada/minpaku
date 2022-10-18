@@ -1,0 +1,39 @@
+<div class="contents">
+    <% @reservations.each do |reservation| %>
+        <% room = reservation.room %>
+        <% start_at_year = reservation.start_at.to_s(:datetime_jp)[0..3] %>
+        <% start_at_month = reservation.start_at.to_s(:datetime_jp)[5..7] %>
+        <% start_at_day = reservation.start_at.to_s(:datetime_jp)[9..10] %>
+        <% end_at_year = reservation.end_at.to_s(:datetime_jp)[0..3] %>
+        <% end_at_month = reservation.end_at.to_s(:datetime_jp)[5..7] %>
+        <% end_at_day = reservation.end_at.to_s(:datetime_jp)[9..10] %>
+        <% start_at = Date.new(start_at_year.to_i, start_at_month.to_i, start_at_day.to_i) %>
+        <% end_at = Date.new(end_at_year.to_i, end_at_month.to_i, end_at_day.to_i) %>
+        <% diff = end_at - start_at %>
+        <% diff = diff.to_s[0..1] %>
+        <% total_price = diff.to_i * room.price * reservation.number_people  %>
+        
+        <table class="reservation_table reservations_table">
+            <tr>
+                <th>ルーム画像</th>
+                <th>ルーム名</th>
+                <th>ルーム紹介</th>
+                <th>合計料金</th>
+                <th>開始日</th>
+                <th>終了日</th>
+                <th>予約確定日時</th>
+            </tr>
+            
+            <tr>
+                
+                <td><%= image_tag room.room_image.url, class: "image" %></td>
+                <td><%= link_to room.name, room %></td>
+                <td><%= room.introduction %></td>
+                <td>¥<%= total_price %></td>
+                <td><%= reservation.start_at.to_s(:datetime_jp) %></td>
+                <td><%= reservation.end_at.to_s(:datetime_jp) %></td>
+                <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+            </tr>
+        </table>
+    <% end %>
+</div>

@@ -1,0 +1,29 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.input-image {
+  width: 130px;
+  height: 130px;
+  border-radius: 60px;
+}
+
+.user_table th {
+  background-color: #77F9C3;
+  padding: 10px 20px;
+}
+  
+.user_table td {
+  background-color: #CEF9DC;
+  padding: 10px 20px;
+}
+.user_show_table{
+  width: 400px; 
+}
+.new_user_table{
+  width: 400px;
+  height: 400px;
+}
+.login_error_wrapper{
+  width: fit-content;
+  margin: auto;
+}

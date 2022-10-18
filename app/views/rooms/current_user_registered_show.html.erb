@@ -1,0 +1,64 @@
+<div class="contents">
+<% @rooms.each do |room| %>
+    <%= form_with(model: room.reservations.build, url: room_reservations_path(room), local: true) do |f| %>
+        <table align="left" class="room_table current_user_registered_room_table">
+            <tr><th colspan="2">ルーム詳細</th></tr>
+            <tr>
+                <% if room.room_image.url %>
+                    <td colspan="2"><%= image_tag room.room_image.url, class: "image" %></td>
+                <% else %>
+                    <p>画像が設定されていません<p>
+                <% end %>
+            </tr>
+            <tr>
+                <th>名前</th>
+                <td>
+                    <%= link_to room.name, room %>
+                </td>
+            </tr>
+            <tr>
+                <th>住所</th>
+                <td>
+                    <%= link_to room.place, room %>
+                </td>
+            </tr>
+            <tr>
+                <th>ルーム紹介</th>
+                <td>
+                    <%= link_to room.introduction, room %>
+                </td>
+            </tr>
+            <tr>
+                <th>料金</th>
+                <td>
+                    <%= link_to room.price, room %>
+                </td>
+            </tr>
+            <tr><th colspan="2">ルーム予約</th></tr>
+            <tr>
+                <th colspan="2"><%= room.price %>円/日</th>
+            </tr>
+            <tr>
+                <th><%= f.label :start_at ,"開始日" %></th>
+                <td><%= f.date_field :start_at %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :end_at ,"終了日" %></th>
+                <td><%= f.date_field :end_at %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :number_people ,"人数" %></th>
+                <td><%= f.number_field :number_people %></td>
+            </tr>
+            <tr><td colspan="2"><%= f.submit "予約完了する"%></td></tr>
+            <tr><td colspan="2"><%= link_to "タイトルページに戻る", root_path %></td></tr>
+            <% if room.registered_by?(current_user) %>
+                <tr><td colspan="2" ><%= link_to "編集", edit_room_path(room) %></td></tr>
+                <tr><td colspan="2" ><%= link_to "削除", room_path(room), method: :delete, data: {confirm: "本当に削除しますか？"} %></td></tr>
+            <% else %>
+                <tr><td colspan="2"><%= link_to "タイトルページに戻る", root_path %></td></tr>
+            <% end %>
+        </table>
+    <% end %>
+    <% end %>
+</div>
